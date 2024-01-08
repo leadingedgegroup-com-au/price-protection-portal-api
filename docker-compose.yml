@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+
+  redis:
+    image: redis
+    container_name: 'redis'
+    ports:
+      - "6379:6379"
+    command: >
+      bash -c "touch /redis.conf && echo 'maxmemory 700mb' > /redis.conf && echo 'maxmemory-policy allkeys-lru' >> /redis.conf && echo 'maxmemory-samples 5' >> /redis.conf && redis-server /redis.conf"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 2G
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [ node.role == manager ]
+      replicas: 1
+

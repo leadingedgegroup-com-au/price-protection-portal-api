@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../price-protection-ui"
+		}
+	],
+	"settings": {
+		"jest.disabledWorkspaceFolders": [
+			"price-protection-ui"
+		]
+	}
+}
